@@ -61,7 +61,9 @@ public class PlayerMovement : MonoBehaviour {
 	public void StopMoving() {
 		this.moving = false;
 	}
-
+	/**
+	 *  Takes in a cardinal direction & returns a velocity vector corresponding to that direction.
+	 **/
 	private Vector3 GetVelocityFromDirection(Direction dir) {
 		switch (direction) {
 			case Direction.NORTH:
@@ -77,7 +79,9 @@ public class PlayerMovement : MonoBehaviour {
 	}
 	void FixedUpdate() {
 		if (moving) {
-			rigidBody.velocity = GetVelocityFromDirection(this.direction);
+			rigidBody.velocity = GetVelocityFromDirection (this.direction);
+		} else {
+			rigidBody.velocity = Vector3.zero;
 		}
 	}
 }
