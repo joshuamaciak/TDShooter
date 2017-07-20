@@ -23,6 +23,7 @@ public class VirtualJoystick : MonoBehaviour {
 				JLogger.Log ("Touch:" + t.fingerId + " Phase:" + t.phase);
 				if (t.phase == TouchPhase.Began) {
 					activeTouchId = t.fingerId;
+					JLogger.Log ("Touch id = " + activeTouchId);
 					Vector3 adjPosition = new Vector3(t.position.x, Screen.height - t.position.y);
 					JLogger.Log ("normal: " + t.position + " adj:" + adjPosition);
 					ray = Camera.main.ScreenPointToRay (t.position);
@@ -98,20 +99,26 @@ public class VirtualJoystick : MonoBehaviour {
 	 **/ 
 	private Touch GetTouchById(int touchId) {
 		foreach(Touch t in Input.touches) {
-			if (t.fingerId == touchId)
+			if (t.fingerId == touchId) {
+				JLogger.Log ("Found touch: " + touchId);
 				return t;
+			}
 		}
 		Touch invalidTouch = new Touch();
 		invalidTouch.fingerId = -1;
 		return invalidTouch;
 	}
 	void Update () {
-		if (DidTouchStart ()) {
-			touchInProgress = true;
+		if (!touchInProgress) {
+			if (DidTouchStart ()) {
+				touchInProgress = true;
+			}
 		}
 		#if UNITY_EDITOR
-		if (DidClickStart()) {
-			clickInProgress = true;
+		if(!clickInProgress) {
+			if (DidClickStart()) {
+				clickInProgress = true;
+			}
 		}
 		#endif
 
