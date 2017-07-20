@@ -69,6 +69,14 @@ public class PlayerMovement : MonoBehaviour {
 		moving = true;
 		rigidBody.velocity = new Vector3 (Mathf.Cos (rads), 0, Mathf.Sin (rads)) * speed;
 	}
+	public void ApplyLookRotationFromJoystickAngle(float degreesToBeAt) {
+		// W  -> N
+		// 90 -> 0
+		// 0 -> 90
+		// 180 -> -90
+		// 270 -> 180
+		transform.rotation = Quaternion.Euler( 0, 90 - degreesToBeAt, 0);
+	}
 	/**
 	 *  Takes in a cardinal direction & returns a velocity vector corresponding to that direction.
 	 **/
