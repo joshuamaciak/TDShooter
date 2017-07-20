@@ -16,7 +16,8 @@ public class PlayerController : MonoBehaviour {
 	void Update () {
 		if(joystick.IsJoystickActive()) {
 			float joystickValue = joystick.GetValueDegrees();
-			if(joystickValue > 315 || joystickValue < 45) { // needs to be or because it modulus (wrap around bounds)
+			playerMovement.ApplyVelocityFromJoystickAngle (joystickValue);
+			/*if(joystickValue > 315 || joystickValue < 45) { // needs to be or because it modulus (wrap around bounds)
 				playerMovement.StartMovingEast();
 			}
 			if(joystickValue > 45 && joystickValue < 135) {
@@ -27,7 +28,7 @@ public class PlayerController : MonoBehaviour {
 			}
 			if(joystickValue > 225 && joystickValue < 315)  {
 				playerMovement.StartMovingSouth();
-			}
+			}*/
 		} else {
 			playerMovement.StopMoving();
 		}

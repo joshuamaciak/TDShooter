@@ -62,6 +62,14 @@ public class PlayerMovement : MonoBehaviour {
 		this.moving = false;
 	}
 	/**
+	 *  Takes the angle of the joystick in degrees & converts it to a unit vector representing velocity 
+	 **/
+	public void ApplyVelocityFromJoystickAngle(float degrees) {
+		float rads = degrees * Mathf.Deg2Rad;
+		moving = true;
+		rigidBody.velocity = new Vector3 (Mathf.Cos (rads), 0, Mathf.Sin (rads)) * speed;
+	}
+	/**
 	 *  Takes in a cardinal direction & returns a velocity vector corresponding to that direction.
 	 **/
 	private Vector3 GetVelocityFromDirection(Direction dir) {
@@ -79,7 +87,7 @@ public class PlayerMovement : MonoBehaviour {
 	}
 	void FixedUpdate() {
 		if (moving) {
-			rigidBody.velocity = GetVelocityFromDirection (this.direction);
+			//rigidBody.velocity = GetVelocityFromDirection (this.direction);
 		} else {
 			rigidBody.velocity = Vector3.zero;
 		}
