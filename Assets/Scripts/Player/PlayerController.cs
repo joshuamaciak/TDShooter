@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour {
 	private PlayerMovement playerMovement; // the PlayerMovement object attached to the player
+	public VirtualJoystick joystick; 	   // the virtual joystick
 	#if UNITY_EDITOR
 	private KeyCode lastKeyDown; // the last key that was pressed down
 	#endif
@@ -13,6 +14,23 @@ public class PlayerController : MonoBehaviour {
 	}
 	
 	void Update () {
+		if(joystick.IsJoystickActive()) {
+			float joystickValue = joystick.GetValueDegrees();
+			if(joystickValue > 315 || joystickValue < 45) { // needs to be or because it modulus (wrap around bounds)
+				playerMovement.StartMovingEast();
+			}
+			if(joystickValue > 45 && joystickValue < 135) {
+				playerMovement.StartMovingNorth();
+			}
+			if(joystickValue > 135 && joystickValue < 225) {
+				playerMovement.StartMovingWest();
+			}
+			if(joystickValue > 225 && joystickValue < 315)  {
+				playerMovement.StartMovingSouth();
+			}
+		} else {
+			playerMovement.StopMoving();
+		}
 		#if UNITY_EDITOR
 		if (Input.GetKeyDown(KeyCode.W)) {
 			lastKeyDown = KeyCode.W;
