@@ -60,6 +60,14 @@ public class PlayerMovement : MonoBehaviour {
 	}
 	public void StopMoving() {
 		this.moving = false;
+		rigidBody.velocity = Vector3.zero;
+	}
+	/**
+	* Applies a force in the opposite direction the player is moving.
+	* (used for gun recoil)
+	**/
+	public void ApplyBackwardsForce(float force) {
+		rigidBody.AddForce(transform.forward * -1 * force);
 	}
 	/**
 	 *  Takes the angle of the joystick in degrees & converts it to a unit vector representing velocity 
@@ -94,10 +102,6 @@ public class PlayerMovement : MonoBehaviour {
 		return Vector3.zero;
 	}
 	void FixedUpdate() {
-		if (moving) {
-			//rigidBody.velocity = GetVelocityFromDirection (this.direction);
-		} else {
-			rigidBody.velocity = Vector3.zero;
-		}
+
 	}
 }
