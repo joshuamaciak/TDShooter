@@ -9,7 +9,7 @@ public class WeaponController : MonoBehaviour {
 	private float secondsSinceLastShot;
 	// Use this for initialization
 	void Start () {
-		if(weapon == null) {
+		if(weaponObject == null) {
 			weaponObject = Instantiate(Resources.Load("Prefabs/Weapons/GUN0"), transform) as GameObject;
 			weaponObject.transform.localPosition = new Vector3(0,0,1);
 		}

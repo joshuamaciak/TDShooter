@@ -22,6 +22,7 @@ public class Weapon : MonoBehaviour {
 		GameObject newBullet = bulletPool.GetObject();
 		newBullet.transform.position    = transform.position;
 		newBullet.transform.rotation    = transform.rotation;
+		newBullet.GetComponent<Bullet>().maxSecondsAlive = range;
 		newBullet.GetComponent<Rigidbody>().velocity = newBullet.transform.forward * bulletSpeed;
 		// todo implement code that spawns bullet, etc...
 
