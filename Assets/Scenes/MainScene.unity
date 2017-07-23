@@ -925,9 +925,10 @@ GameObject:
   - component: {fileID: 1856393576}
   - component: {fileID: 1856393575}
   - component: {fileID: 1856393574}
-  - component: {fileID: 1856393578}
   - component: {fileID: 1856393579}
+  - component: {fileID: 1856393578}
   - component: {fileID: 1856393580}
+  - component: {fileID: 1856393581}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -993,7 +994,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1856393573}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 1.78, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -1044,6 +1045,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   movementJoystick: {fileID: 55937164}
   lookJoystick: {fileID: 1017051107}
+--- !u!114 &1856393581
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1856393573}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ace8f50a05a784b7ba52cf970dc98a6d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weaponObject: {fileID: 0}
 --- !u!1001 &1938320501
 Prefab:
   m_ObjectHideFlags: 0
