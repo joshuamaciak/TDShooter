@@ -10,7 +10,7 @@ public class WeaponController : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		if(weaponObject == null) {
-			weaponObject = Instantiate(Resources.Load("Prefabs/Weapons/GUN0"), transform) as GameObject;
+			weaponObject = Instantiate(Resources.Load("Prefabs/Weapons/GUN2"), transform) as GameObject;
 			weaponObject.transform.localPosition = new Vector3(0,0,1);
 		}
 		weapon = weaponObject.GetComponent<Weapon>();
